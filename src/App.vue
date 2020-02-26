@@ -2,11 +2,13 @@
   <div id="app">
     <h1>Countries:</h1>
     <countries-list :countries='countries'></countries-list>
+    <country-details :country='selectedCountry'></country-details>
   </div>
 </template>
 
 <script>
 import CountriesList from './components/CountriesList.vue';
+import CountryDetail from './components/CountryDetail.vue';
 import {eventBus} from './main.js';
 
 export default {
@@ -27,18 +29,16 @@ export default {
     })
   },
   components: {
-    "countries-list": CountriesList
+    "countries-list": CountriesList,
+    "country-details": CountryDetail
   }
 }
 </script>
 
 <style>
 #app {
-  /* font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px; */
+
+  display: flex;
+
 }
 </style>
