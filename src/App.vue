@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <h1>Countries:</h1>
-    <countries-list :countries='countries'></countries-list>
+    <country-select :countries='countries'></country-select>
     <country-details :country='selectedCountry'></country-details>
   </div>
 </template>
 
 <script>
-import CountriesList from './components/CountriesList.vue';
+import CountrySelect from './components/CountrySelect.vue';
 import CountryDetail from './components/CountryDetail.vue';
 import {eventBus} from './main.js';
 
@@ -24,12 +24,12 @@ export default {
     .then(res => res.json())
     .then(data => this.countries = data)
 
-    eventBus.$on('country-selected', (country) => {
+    eventBus.$on('country-changed', (country) => {
       this.selectedCountry = country;
     })
   },
   components: {
-    "countries-list": CountriesList,
+    "country-select": CountrySelect,
     "country-details": CountryDetail
   }
 }
@@ -38,7 +38,7 @@ export default {
 <style>
 #app {
 
-  display: flex;
+  /* display: flex; */
 
 }
 </style>
